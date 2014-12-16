@@ -97,6 +97,18 @@ module QLab
       end
     end
 
+    def select cues
+      unless cues.is_a? Array
+        cues = [cues]
+      end
+
+      cue_ids = cues.collect do |cue|
+        cue.id
+      end.join(',')
+
+      send_message workspace_command("select_id/#{cue_ids}")
+    end
+
     private
 
     def workspace_command command
