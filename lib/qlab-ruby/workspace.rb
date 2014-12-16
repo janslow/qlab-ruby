@@ -74,6 +74,8 @@ module QLab
         cues_response.each do |cuelist|
           @cue_lists << QLab::CueList.new(cuelist, self)
         end
+      else
+        raise "Connection Error"
       end
     end
 
